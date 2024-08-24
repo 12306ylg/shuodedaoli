@@ -1,7 +1,8 @@
 import math
 import os,sys
-import cv2 
+import cv2
 import numpy as np
+import streamlit as st
 def Yituosi(img):
     height,width=img.shape[:2]
     print(height,width)
@@ -25,13 +26,13 @@ def Yituosi(img):
             if xx<0 or yy<0:
                 print(xx,yy)
             img_out[-i+500][j+500]=img[yy][xx]
-    return img_out        
+    return img_out
 
 os.chdir(sys.path[0])
-im=input("图片名称：\n")
+im=st.text_input("图片名称：\n")
 img = cv2.imread(im)
 img_out=Yituosi(img)
 cv2.imwrite("Yituosi-{}.png".format(im[:-4]),img_out)
-cv2.imshow("Yituosi-{}.png".format(im[:-4]),img_out)
+st.image(img_out)
 print("成功")
 cv2.waitKey(0)
