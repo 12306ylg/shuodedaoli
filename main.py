@@ -30,9 +30,10 @@ def Yituosi(img):
 
 
 im=st.text_input("图片名称：\n")
-img = cv2.imread(im)
-img_out=Yituosi(img)
-cv2.imwrite("Yituosi-{}.png".format(im[:-4]),img_out)
-st.image(img_out)
-print("成功")
-cv2.waitKey(0)
+if im:
+ img = cv2.imread(im)
+ img_out=Yituosi(img)
+ cv2.imwrite("Yituosi-{}.png".format(im[:-4]),img_out)
+ st.image(img_out)
+ st.info("成功")
+ cv2.waitKey(0)
