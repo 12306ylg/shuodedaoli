@@ -28,7 +28,7 @@ def Yituosi(img):
             img_out[-i+500][j+500]=img[yy][xx]
     return img_out
 
-os.chdir(sys.path[0])
+
 im=st.text_input("图片名称：\n")
 img = cv2.imread(im)
 img_out=Yituosi(img)
