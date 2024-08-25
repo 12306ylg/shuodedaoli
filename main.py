@@ -29,9 +29,11 @@ def Yituosi(img):
     return img_out
 
 
-im=st.text_input("图片名称：\n")
+im=st.text_input("图片(url)：\n")
 if im:
- img = cv2.imread(im)
+ req = urllib.request.urlopen(im)
+ arr = np.asarray(bytearray(req.read()), dtype=np.uint8)
+ img = cv2.imdecode(arr, -1) # 'Load it as it is'
  img_out=Yituosi(img)
  cv2.imwrite("Yituosi-{}.png".format(im[:-4]),img_out)
  st.image(img_out)
